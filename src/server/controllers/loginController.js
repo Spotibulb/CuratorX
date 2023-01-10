@@ -1,6 +1,6 @@
 const db = require('./models');
 
-const controller = {};
+const loginController = {};
 
 controller.checkProfile = async (req, res, next) => {
     //initial query of database
@@ -16,4 +16,4 @@ controller.checkProfile = async (req, res, next) => {
 
 }
 
-module.exports = controller;
+module.exports = loginController;
