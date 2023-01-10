@@ -10,11 +10,11 @@ module.exports = {
   mode: process.env.NODE_ENV,
   module: {
     rules: [
-        {
-            test: /\.tsx?/,
-            exclude: /(node_modules)/,
-            use: 'ts-loader',
-          },
+      {
+        test: /\.tsx?/,
+        exclude: /(node_modules)/,
+        use: 'ts-loader',
+      },
       {
         test: /\.jsx?/,
         exclude: /node_modules/,
@@ -29,6 +29,7 @@ module.exports = {
     compress: true,
     port: 8080,
     hot: true,
+    historyApiFallback: true,
     proxy: {
       '/SignUp': {
         target: 'http://localhost:8080/',
@@ -41,4 +42,7 @@ module.exports = {
       template: './src/client/index.html',
     }),
   ],
+  resolve: {
+    extensions: ['.js', 'jsx', '.tsx', '.ts'],
+  },
 };
