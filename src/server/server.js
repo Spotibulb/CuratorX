@@ -2,15 +2,19 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const loginController = require('./controllers/loginController');
 //const router = express.Router();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Initial serve
-app.get('/', (req, res) => {
+app.get('/', loginController.login, (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
+
+// static serving the assets 
+// app.use(express.static('assets'));
 
 //404 handler
 app.use((req, res, next) => {
