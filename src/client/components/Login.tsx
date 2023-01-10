@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import loginUrl from '../auth';
 export default function Login() {
-    const handleClick = async () => {
-        const result = await fetch('/')
-        
-    }
   return (
     <div>
-      <button onClick={handleClick} type="submit">Authenticate</button>
-      <Link to={'/home'}><div>Home</div></Link>
+      <div>
+        <a href={loginUrl}>Login</a>
+      </div>
+      <Link to={'/home'}>
+        <div>Home</div>
+      </Link>
     </div>
-  )
+  );
 }
