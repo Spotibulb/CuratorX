@@ -1,4 +1,4 @@
-const db = require('./models');
+const db = require('../models/SongModel');
 
 const songController = {};
 
@@ -16,7 +16,11 @@ songController.songQuery = async (req, res, next) => {
    * error handling return (error)
    */
 
-
+  try {
+    const result = await db.query('SELECT username FROM users ;')
+  } catch (error) {
+    
+  }
 }
 
 module.exports = songController;

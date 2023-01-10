@@ -1,5 +1,4 @@
-const db = require('./models');
-
+const db = require('../models/SongModel');
 const blackListController = {};
 
 blackListController.blackListQuery = async (req, res, next) => {

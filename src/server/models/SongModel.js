@@ -9,7 +9,7 @@ const myURI = 'postgres://oanzquni:177QXyLA6eWLpInvD08FmmdbEjYxYvqN@mahmud.db.el
 // const URI = process.env.PG_URI || myURI;
 
 const db = new pg.Pool({
-  connectionString: URI
+  connectionString: myURI
 });
 
 // CREATE TABLE Message (message varchar(255), password varchar(255), created_at timestamp) 
