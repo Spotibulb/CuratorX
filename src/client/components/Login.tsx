@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   const clientID: string = 'e168e2d99b2c4c8eac4d86741526cc6d';
-  const redirectURL: string = 'localhost:8080/';
+  const redirectURL: string = 'http://127.0.0.1:8080';
   const scopes:string[] = ['user-library-read','user-read-private','user-read-email'];
   const scope = 'user-read-private user-read-email';
   const handleClick = async () => {
