@@ -4,9 +4,9 @@
   "description": "App to curate your song of the day.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server/index.js",
-    "dev": "webpack serve",
-    "build": "webpack"
+    "start": "nodemon ./src/server/server.js",
+    "dev": "NODE_ENV=development webpack serve --open & npm start",
+    "build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,20 @@
   },
   "homepage": "https://github.com/Spotibulb/CuratorX#readme",
   "dependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@types/react": "^18.0.26",
+    "babel-loader": "^9.1.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2",
+    "ts-loader": "^9.4.2"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.20",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
