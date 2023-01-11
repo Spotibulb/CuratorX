@@ -12,7 +12,7 @@ const root = createRoot(container); // createRoot(container!) if you use TypeScr
 
 const router = createBrowserRouter([
   { path: '/', element: <Login /> },
-  { path: '/home', element: <Home /> },
+  { path: '/home', element: <App /> },
 ]);
 
 root.render(

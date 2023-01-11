@@ -9,11 +9,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Initial serve
-app.get('/', loginController.login, (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-// static serving the assets 
+// static serving the assets
 // app.use(express.static('assets'));
 
 //404 handler
