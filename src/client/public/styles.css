@@ -1,0 +1,123 @@
+body {
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+.Home {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 20px solid #1DB954;
+    background-color: #191414;
+    color: white;
+    padding: 12rem 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 1rem;
+    -moz-box-shadow: 0 0 10px rgb(173, 200, 169);
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.Home h2 {
+    z-index: 999;
+}
+
+
+.logo {
+    background-image: url('../public/spotify-logo.png');
+    background-size: cover;
+    width: 5rem;
+    height: 5rem;
+    opacity: .8;
+    animation: 3s ease 0s infinite beat;
+
+}
+
+@keyframes beat {
+    0%, 50%, 100% { transform: scale(1, 1); }
+    30%, 80% { transform: scale(0.92, 0.95); }
+  }
+  
+
+.wrapper{
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width:fit-content;
+    height: fit-content;
+    border: 10px solid white;
+}
+/* div{
+    width:30px;
+    height:60px;
+    animation-iteration-count:infinite;
+    animation-iteration-function:linear;
+    position:fixed;
+} */
+div.line1{
+    background-color:#787878;
+    animation:animate1 1.9s linear infinite ;
+    top:200px ;
+    left:60px ;
+}
+div.line2{
+    background-color:#787878;
+    animation:animate2 2.1s linear infinite;
+    top:200px ;
+    left:95px ;
+}
+div.line3{
+    background-color:#787878;
+    animation:animate3 2.3s linear infinite;
+    top:200px ;
+    left:130px ;
+}
+div.line4{
+    background-color:#787878;
+    animation:animate4 1.4s linear infinite;
+    top: 200px;
+    left: 165px ;
+}
+div.line5{
+    background-color:#787878;
+    animation:animate5 1.7s linear infinite ;
+    top: 200px;
+    left:200px ;
+}
+div.line6{
+    background-color:#787878;
+    animation:animate6 2.0s linear infinite;
+    top: 200px;
+    left:235px ;
+}
+div.line7{
+    background-color:#787878;
+    animation:animate7 1.8s linear infinite;
+    top:200px ;
+    left: 270px;
+}
+@keyframes animate1{
+    50%{ background-color:#000; top:100px; height:160px;}
+}
+@keyframes animate2{
+    50%{background-color:#000;top:50px;height:210px;}
+}
+@keyframes animate3{
+    50%{background-color:#000; top:10px; height:250px;}
+}
+@keyframes animate4{
+    50%{background-color:#000; top:100px; height:160px;}
+}
+@keyframes animate5{
+    50%{background-color:#000; top:50px; height:210px;}
+}
+@keyframes animate6{
+    50%{background-color:#000; top:150px; height:110px;}
+}
+@keyframes animate7{
+    50%{background-color:#000; top:50px; height:210px;}
+}
