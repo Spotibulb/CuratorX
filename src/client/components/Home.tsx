@@ -2,11 +2,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Buffer } from 'buffer'
 import '../public/styles.css'
+import axios from 'axios'
+import querystring from 'querystring';
 // import logo from '../public/spotify-logo.png'
 
 
 
 const code = new URLSearchParams(window.location.search).get('code');
+console.log(code)
 const redirectUri = 'http://localhost:8080/home';
 const grant = 'authorization_code';
 
@@ -40,35 +43,34 @@ export default function Home() {
       }
      */
       const data = {
-        grant_type: grant,
-        code: code || '',
-        redirect_uri: redirectUri
+        'grant_type': 'authorization_code',
+        code: code,
+        'redirect_uri': 'redirectUri'
       };
-    //const testy = new URLSearchParams(data).toString()
+      var formBody : string[]= [];
+      for (var property in data) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(data[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      let form = formBody.join("&");
     const fetchToken = async () => {
       const result = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
+        body: form,
+      mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/www-form-urlencoded',
+          'Content-Type': 'application/json',
           'Authorization': 'Basic ' + Buffer.from('0cd0937e35ad49fca43d27f052676e0c:a459962e93254923b14ff21ec932c2e7')
         }, 
-        
-        body: new URLSearchParams({
-          'grant_type': 'authorization_code',
-          'code': `${code}`,
-          'redirect_uri': 'http://localhost:8080/home'
-      })
       }
     )
-        console.log(result)
-        console.log(new URLSearchParams(data).toString())
-  }
-  if (code) {
-    console.log(code)
-    fetchToken()     
-  }
-
-
+    
+    console.log(result)
+  
+    }
+    fetchToken()
+    
 
   }, [])
   
