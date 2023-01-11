@@ -1,7 +1,12 @@
+* {
+    border: bor
+}
+
 body {
-    background-color: black;
+    background: linear-gradient(to right, #414141 0%, #000 100%);
     font-family: 'Franklin Gothic Medium', Arial, sans-serif;
 }
+
 .Home {
     position: fixed;
     top: 50%;
@@ -10,12 +15,12 @@ body {
     border: 20px solid #1DB954;
     background-color: #191414;
     color: white;
-    padding: 8rem;
+    padding: 6rem 8rem;
+    padding-bottom: 4.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
     border-radius: 1rem;
     -moz-box-shadow: 0 0 10px rgb(173, 200, 169);
     -webkit-box-shadow: 0 0 10px #ccc;
@@ -23,15 +28,34 @@ body {
 }
 
 .Home h2 {
-    z-index: 999;
+    /* z-index: 999; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 3rem;
+    color:rgb(232, 240, 230);
+    text-shadow: 0 1px 0 rgb(66, 70, 66),
+    0 2px 0 rgb(66, 70, 66),
+    0 3px 0 rgb(66, 70, 66),
+    0 4px 0 rgb(66, 70, 66),
+    0 5px 0 rgb(66, 70, 66),
+    0 6px 0 transparent,
+    0 7px 0 transparent,
+    0 8px 0 transparent,
+    0 9px 0 transparent,
+    0 10px 10px rgba(0, 0, 0, 0.4);
 }
 
 
 .logo {
     background-image: url('../public/spotify-logo.png');
     background-size: cover;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     opacity: .8;
     animation: 3s ease 0s infinite beat;
 
@@ -42,23 +66,44 @@ body {
     30%, 80% { transform: scale(0.92, 0.95); }
   }
   
-
-.wrapper{
-    /* position: fixed;
+  .login-link {
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
-    width:fit-content;
-    height: fit-content;
-    border: 10px solid white;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    font-size: 6rem;
+    color:rgb(173, 200, 169);
+    text-shadow: 0 1px 0 rgb(66, 70, 66),
+    0 2px 0 rgb(66, 70, 66),
+    0 3px 0 rgb(66, 70, 66),
+    0 4px 0 rgb(66, 70, 66),
+    0 5px 0 rgb(66, 70, 66),
+    0 6px 0 transparent,
+    0 7px 0 transparent,
+    0 8px 0 transparent,
+    0 9px 0 transparent,
+    0 10px 10px rgba(0, 0, 0, 0.4);
+  }
+
+.wrapper{
+    position: fixed;
+    top: 30%;
+    left: 41.5%;
+    transform: translate(-50%, -50%);
+    /* width:fit-content;
+    height: fit-content; */
+    opacity: .8;
+
 }
-/* div{
+
+.music{
     width:30px;
     height:60px;
     animation-iteration-count:infinite;
     animation-iteration-function:linear;
     position:fixed;
-} */
+}
 div.line1{
     background-color:#787878;
     animation:animate1 1.9s linear infinite ;

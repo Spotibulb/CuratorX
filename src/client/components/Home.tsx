@@ -148,8 +148,7 @@ spotifyApi.getMe()
 
   <div className="Home">
   <div className="logo"></div>
-      <h2>{username}'s</h2>
-      <h2>Discover Daily</h2>
+    <h2>{username}'s Discover Daily</h2>
       <iframe  src={songLink} width="100%" height="352" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       <button onClick={getSongReload}>Refesh</button>
     </div>
