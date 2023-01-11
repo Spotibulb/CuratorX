@@ -52,7 +52,7 @@ export default function Home() {
           'Content-Type': 'application/www-form-urlencoded',
           'Authorization': 'Basic ' + Buffer.from('0cd0937e35ad49fca43d27f052676e0c:a459962e93254923b14ff21ec932c2e7')
         }, 
-        mode: 'no-cors',
+        
         body: new URLSearchParams({
           'grant_type': 'authorization_code',
           'code': `${code}`,
