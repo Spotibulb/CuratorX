@@ -1,77 +1,59 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import axios from "axios";
+import SpotifyWebApi from "spotify-web-api-node";
+
+
 import { Buffer } from 'buffer'
 import '../public/styles.css'
 // import logo from '../public/spotify-logo.png'
 
 
-
+const spotifyApi = new SpotifyWebApi();
 const code = new URLSearchParams(window.location.search).get('code');
-const redirectUri = 'http://localhost:8080/home';
-const grant = 'authorization_code';
 
 export default function Home() {
-  const [song, changeSong] = useState([])
-  useEffect(() => {
-    /**
-     * 
-     * headers: 
-     * { Authorization: Basic <base64 encoded client_id:client_secret>,
-     * content-type: application/xww-form-urlendcode}
-     * }
-     * 
-     * make a POST request to the /api/token endpoint
-     * the body of this req must contain: grant_type "authorization code"
-     * code: code from line 4
-     * redirect_uri: redirect_uri from auth.js
-     * 
-     * (PKCE if used)
-     * client_id : value string
-     * code_verifier: ??? 
-     * 
-     * 
-     * ex response: 
-     * {
-        "access_token": "NgCXRK...MzYjw",
-        "token_type": "Bearer",
-        "scope": "user-read-private user-read-email",
-        "expires_in": 3600,
-        "refresh_token": "NgAagA...Um_SHo"
-      }
-     */
-      const data = {
-        grant_type: grant,
-        code: code || '',
-        redirect_uri: redirectUri
-      };
-    //const testy = new URLSearchParams(data).toString()
-    const fetchToken = async () => {
-      const result = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/www-form-urlencoded',
-          'Authorization': 'Basic ' + Buffer.from('0cd0937e35ad49fca43d27f052676e0c:a459962e93254923b14ff21ec932c2e7')
-        }, 
-        
-        body: new URLSearchParams({
-          'grant_type': 'authorization_code',
-          'code': `${code}`,
-          'redirect_uri': 'http://localhost:8080/home'
-      })
-      }
-    )
-        console.log(result)
-        console.log(new URLSearchParams(data).toString())
-  }
-  if (code) {
-    console.log(code)
-    fetchToken()     
-  }
-
-
-
-  }, [])
   
+  // const [accessToken, setAccessToken] = useState();
+  let userName;
+// use effect to request to server to get access token
+    useEffect(() => {
+      axios
+        .post("http://localhost:3000/login", { code })
+        .then((response) => {
+  
+          // If success then cut the code string from the URL and execute the other thing
+          // window.history.pushState({}, null, "/");
+  
+          console.log(response.data.accessToken);
+          // set user with access token to be used globally
+          spotifyApi.setAccessToken(response.data.accessToken);
+
+// grab user data
+    spotifyApi.getMe()
+    .then(function(data) {
+      console.log('Some information about the authenticated user', data.body);
+      
+      //set username to user data's id
+      userName = data.body.id
+
+      // grab playlists with id
+      spotifyApi.getUserPlaylists(userName)
+  .then(function(data) {
+    console.log('Retrieved playlists', data.body);
+  },function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+    }, function(err) {
+      console.log('Something went wrong!', err);
+    });
+        })
+        .catch(() => {
+          //   If fail redirect to home page - Login page
+        });
+    }, [code]);
+
   return (
 
   <div className="Home">

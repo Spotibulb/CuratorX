@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@types/react": "^18.0.26",
+    "axios": "^1.2.2",
     "babel-loader": "^9.1.2",
     "buffer": "^6.0.3",
     "cookie-parser": "^1.4.6",

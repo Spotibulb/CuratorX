@@ -4,13 +4,41 @@ const app = express();
 const PORT = 3000;
 const cors = require('cors');
 const loginController = require('./controllers/loginController');
-//const router = express.Router();
+const spotifyWebApi = require('spotify-web-api-node');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+const credentials = {
+  clientId: '0cd0937e35ad49fca43d27f052676e0c',
+  clientSecret: 'a459962e93254923b14ff21ec932c2e7',
+  redirectUri: 'http://localhost:8080/home',
+};
+
 app.use(express.static(path.join(__dirname, '../client/public')));
+
+app.post('/login', (req,res) => {
+  //  setup 
+      let spotifyApi = new spotifyWebApi(credentials)
+  
+  //  Get the "code" value posted from the client-side and get the user's accessToken from the spotify api     
+      const code = req.body.code
+  
+      // Retrieve an access token
+      spotifyApi.authorizationCodeGrant(code).then((data) => {
+  
+          // Returning the User's AccessToken in the json formate  
+          res.json({
+              accessToken : data.body.access_token,
+          }) 
+      })
+      .catch((err) => {
+          console.log(err);
+          res.sendStatus(400)
+      })
+  
+  })
 
 //Initial serve
 // app.get('/', (req, res) => {
