@@ -14,10 +14,17 @@ const code = new URLSearchParams(window.location.search).get('code');
 
 export default function Home() {
   
-  // const [accessToken, setAccessToken] = useState();
+  const [link, setLink] = useState();
+  const [username, setUsername] = useState('');
+
+  const [songLink, setSongLink] = useState('https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT?si=9b004eeef3754e16'+'?utm_source=generator')
   let userName;
+  let spotifyArtist: string[] = [];
 // use effect to request to server to get access token
+
+
     useEffect(() => {
+      const getSong = () => {
       axios
         .post("http://localhost:3000/login", { code })
         .then((response) => {
@@ -29,21 +36,45 @@ export default function Home() {
           // set user with access token to be used globally
           spotifyApi.setAccessToken(response.data.accessToken);
 
+spotifyApi.getFollowedArtists({ limit : 49 })
+  .then(function(data) {
+      // 'This user is following 1051 artists!'
+     console.log('This user is following ', data.body.artists, ' artists!');
+      // randomize the artists
+     for(let i=0; i< 5; i++){
+      spotifyArtist.push(data.body.artists.items[i].id)
+     }
+
+     console.log(spotifyArtist)
+
+     spotifyApi.getRecommendations({
+      min_energy: 0.4,
+      seed_artists: spotifyArtist,
+      limit: 50,
+      min_popularity: 50
+    })
+    .then(function(data) {
+    let recommendation = data.body.tracks[0].id;
+    setSongLink(`https://open.spotify.com/embed/track/${recommendation}?si=9b004eeef3754e16?utm_source=generator`)
+    console.log(recommendation);
+    }, function(err) {
+    console.log("Something went wrong!", err);
+    });
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+
+
+
 // grab user data
     spotifyApi.getMe()
     .then(function(data) {
       console.log('Some information about the authenticated user', data.body);
       
       //set username to user data's id
-      userName = data.body.id
-
-      // grab playlists with id
-      spotifyApi.getUserPlaylists(userName)
-  .then(function(data) {
-    console.log('Retrieved playlists', data.body);
-  },function(err) {
-    console.log('Something went wrong!', err);
-  });
+      userName = data.body.display_name
+      setUsername(userName)
 
     }, function(err) {
       console.log('Something went wrong!', err);
@@ -51,23 +82,22 @@ export default function Home() {
         })
         .catch(() => {
           //   If fail redirect to home page - Login page
-        });
-    }, [code]);
+        });}
+
+
+      getSong()
+    }, []);
+//embed
+//https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT?utm_source=generator
+// open in spotify
 
   return (
 
   <div className="Home">
   <div className="logo"></div>
+      <h2>{username}'s</h2>
       <h2>Discover Daily</h2>
-    {/* <div className="wrapper">
-    <div className="line1"></div>
-    <div className="line2"></div>
-    <div className="line3"></div>
-    <div className="line4"></div>
-    <div className="line5"></div>
-    <div className="line6"></div>
-    <div className="line7"></div>
-  </div> */}
+      <iframe  src={songLink} width="100%" height="352" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
   )

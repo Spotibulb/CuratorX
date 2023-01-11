@@ -10,8 +10,9 @@ body {
     border: 20px solid #1DB954;
     background-color: #191414;
     color: white;
-    padding: 12rem 8rem;
+    padding: 8rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
