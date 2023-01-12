@@ -1,6 +1,6 @@
 <div align="center">
     <img src="src/client/public/curatorx-banner.png" alt="curatorx banner" width="100%"/>
-    <h2 width="65%">The application to give you what Spotify can't - your daily song, aka Discover Daily.</h2>
+    <h3>The application to give you what Spotify can't - your daily song, aka Discover Daily.</h3>
 </div>
 
 <p align="center">
