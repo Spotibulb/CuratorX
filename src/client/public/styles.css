@@ -86,6 +86,28 @@ body {
     0 10px 10px rgba(0, 0, 0, 0.4);
   }
 
+  .refresh-button {
+      margin-top: 3rem;
+      background-color: transparent;
+      border: white;
+      color: #1DB954;
+      font-size: 1rem;
+      padding: .8rem 1rem;
+      border-radius: .9rem;
+      transition: all .2s ease-in-out; 
+      background-image: url('../public/shuffle.svg');
+      background-size: cover;
+      width: 2rem;
+      height: 2rem;
+
+  }
+
+  .refresh-button:hover {
+    transform: scale(1.2); 
+    cursor: pointer;
+
+  }
+
 .wrapper{
     position: fixed;
     top: 30%;
