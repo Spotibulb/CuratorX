@@ -1,6 +1,8 @@
-# CuratorX
-
-An application to give you what Spotify can't - your daily song, aka Discover Daily.
+<div align="center">
+    <img src="src/client/public/curatorx-banner.png" alt="curatorx banner" width="100%"/>
+    <h1>Meet CuratorX</h1>
+    <h2>The application to give you what Spotify can't - your daily song, aka Discover Daily.</h2>
+</div>
 
 <p align="center">
   <img src="src/client/public/curatorx-login.gif" alt="login" />
@@ -10,6 +12,7 @@ An application to give you what Spotify can't - your daily song, aka Discover Da
 </p>
 
 ## Meet the CuratorX Team
+
 - Jackqueline Nguyen • [LinkedIn](https://www.linkedin.com/in/jackquelinenguyen/) • [Github](https://github.com/jackquelinenguyen)
 - James Nghiem • [LinkedIn](https://www.linkedin.com/in/james-nghiem/) • [Github](https://github.com/jemzir)
 - Taylor Alan • [LinkedIn](https://www.linkedin.com/in/taylor-alan-026a49226/) • [Github](https://github.com/taylien96)
